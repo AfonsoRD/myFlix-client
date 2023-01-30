@@ -27576,7 +27576,7 @@ const SignupView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("https://movie-api-zhikiki.herokuapp.com/users", {
+        fetch("https://movie-api-drab.vercel.app/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -27636,7 +27636,7 @@ const SignupView = ()=>{
                 children: [
                     "Email:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
+                        type: "email",
                         value: email,
                         minLength: "5",
                         onChange: (e)=>setEmail(e.target.value),
@@ -27656,7 +27656,7 @@ const SignupView = ()=>{
                 children: [
                     "Birthday",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
+                        type: "date",
                         value: birthday,
                         onChange: (e)=>setBirthday(e.target.value),
                         required: true
