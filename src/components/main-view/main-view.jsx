@@ -25,6 +25,9 @@ const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
   }, []);
   if (selectedMovie) {
