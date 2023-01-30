@@ -1,13 +1,25 @@
 import { useState, useEffect } from 'react';
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
-const MainView = () => {
-  const [movies, setMovies] = useState([]);
+import LoginView from '../login-view/login-view';
+import SignupView from '../signup-view/signup-view';
+import MovieCard from '../movie-card/movie-card';
+import MovieView from '../movie-view/movie-view';
 
+const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedToken = localStorage.getItem('token');
+  const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
 
   useEffect(() => {
-    fetch('https://movie-api-drab.vercel.app/movies')
+    if (!token) {
+      return;
+    }
+
+    fetch('https://movie-api-drab.vercel.app/movies', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((data) => {
@@ -25,11 +37,29 @@ const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
+        console.log('movies from api:', data);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.log(error);
       });
-  }, []);
+  }, [token]);
+
+  //User view for Login
+  if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or
+        <SignupView />
+      </>
+    );
+  }
+
   if (selectedMovie) {
     return (
       <MovieView
@@ -38,21 +68,34 @@ const MainView = () => {
       />
     );
   }
+
   if (movies.length === 0) {
-    return <div>The list is empty</div>;
+    return <div>The list of movies is empty</div>;
   }
   return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
-        />
-      ))}
-    </div>
+    <>
+      <div>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ))}
+      </div>
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Sign out
+      </button>
+    </>
   );
 };
+
 export default MainView;
