@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 // The BookCard function component
-export const MovieCard = ({ movie, onMovieClick }) => {
+const MovieCard = ({ movie, onMovieClick }) => {
   return (
     <div
       onClick={() => {
@@ -29,3 +29,5 @@ MovieCard.propTypes = {
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
 };
+
+export default MovieCard;
