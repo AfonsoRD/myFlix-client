@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import {
+  Form,
+  Button,
+  Card,
+  CardGroup,
+  Container,
+  Col,
+  Row
+} from 'react-bootstrap';
 
 const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -37,33 +45,46 @@ const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId='formUsername'>
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
-          type='text'
-          value={username}
-          minLength='5'
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </Form.Group>
-      <Form.Group controlId='formPassword'>
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </Form.Group>
-      <Button
-        variant='primary'
-        type='submit'
-      >
-        Login
-      </Button>
-    </Form>
+    <Container>
+      <Row>
+        <Col>
+          <CardGroup>
+            <Card>
+              <Card.Body>
+                <Card.Title>Login your account</Card.Title>
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId='formUsername'>
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                      type='text'
+                      value={username}
+                      minLength='5'
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group controlId='formPassword'>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                      type='password'
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                  <Button
+                    variant='primary'
+                    type='submit'
+                  >
+                    Login
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
