@@ -1,5 +1,6 @@
 // Here you import the PropTypes library
 import PropTypes from 'prop-types';
+import './movie-card.scss';
 import { Button, Card } from 'react-bootstrap';
 
 // The MovieCard function component
@@ -15,8 +16,8 @@ const MovieCard = ({ movie, onMovieClick }) => {
         <Card.Text>{movie?.description}</Card.Text>
         <Card.Text>Year: {movie?.year}</Card.Text>
         <Button
+          className='open-button'
           onClick={() => onMovieClick(movie)}
-          variant='link'
         >
           Open
         </Button>
