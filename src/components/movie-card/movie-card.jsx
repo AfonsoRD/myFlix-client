@@ -6,7 +6,10 @@ import { Button, Card } from 'react-bootstrap';
 // The MovieCard function component
 const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card
+      style={{ width: '18rem' }}
+      className='h-100'
+    >
       <Card.Img
         variant='top'
         src={movie.image}

@@ -72,13 +72,17 @@ const MainView = () => {
       ) : (
         <>
           {movies.map((movie) => (
-            <MovieCard
+            <Col
               key={movie.id}
-              movie={movie}
-              onMovieClick={(newSelectedMovie) => {
-                setSelectedMovie(newSelectedMovie);
-              }}
-            />
+              md={3}
+            >
+              <MovieCard
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
+                  setSelectedMovie(newSelectedMovie);
+                }}
+              />
+            </Col>
           ))}
           <Button
             variant='primary'
