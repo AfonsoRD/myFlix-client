@@ -18,12 +18,7 @@ const MovieCard = ({ movie, onMovieClick }) => {
         <Card.Title>{movie?.title}</Card.Title>
         <Card.Text>{movie?.description}</Card.Text>
         <Card.Text>Year: {movie?.year}</Card.Text>
-        <Button
-          className='open-button'
-          onClick={() => onMovieClick(movie)}
-        >
-          Open
-        </Button>
+        <Button onClick={() => onMovieClick(movie)}>Open</Button>
       </Card.Body>
     </Card>
   );
