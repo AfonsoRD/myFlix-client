@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
 
 const SignupView = () => {
   const [username, setUsername] = useState('');
@@ -33,28 +34,27 @@ const SignupView = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId='formUsername'>
+        <Form.Label>Username:</Form.Label>
+        <Form.Control
           type='text'
           value={username}
           minLength='5'
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Password:
-        <input
+      </Form.Group>
+      <Form.Group controlId='formPassword'>
+        <Form.Label>Password:</Form.Label>
+        <Form.Control
           type='password'
           value={password}
-          minLength='5'
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <label>
+      </Form.Group>
+      <Form.Group controlId='formEmail'>
         Email:
         <input
           type='email'
@@ -63,8 +63,8 @@ const SignupView = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
+      </Form.Group>
+      <Form.Group controlId='formBirthday'>
         Birthday
         <input
           type='date'
@@ -72,9 +72,14 @@ const SignupView = () => {
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
-      </label>
-      <button type='submit'>Submit</button>
-    </form>
+      </Form.Group>
+      <Button
+        variant='primary'
+        type='submit'
+      >
+        Signup
+      </Button>
+    </Form>
   );
 };
 
