@@ -37,7 +37,6 @@ const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
-        console.log('movies from api:', data);
       })
       .catch((error) => {
         console.log(error);
