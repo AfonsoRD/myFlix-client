@@ -1,3 +1,15 @@
+.back-button {
+  color: #f5f5f5;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+img {
+  width: 100%;
+}
+
 .my-flix {
   color: #4682b4;
 }
@@ -12032,4 +12044,4 @@ textarea.form-control-lg {
   }
 }
 
-/*# sourceMappingURL=index.ce1d6491.css.map */
+/*# sourceMappingURL=index.5f1df611.css.map */
