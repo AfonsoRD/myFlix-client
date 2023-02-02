@@ -4,7 +4,7 @@ import SignupView from '../signup-view/signup-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import NavigationBar from '../navigation-bar/navigation-bar';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 const MainView = () => {
@@ -63,7 +63,7 @@ const MainView = () => {
             path='/signup'
             element={
               <>
-                {!user ? (
+                {user ? (
                   <Navigate to='/' />
                 ) : (
                   <Col md={5}>

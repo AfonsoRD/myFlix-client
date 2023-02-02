@@ -39,8 +39,7 @@ MovieCard.propTypes = {
     directorName: PropTypes.string.isRequired,
     directorBio: PropTypes.string.isRequired,
     directorBirthday: PropTypes.string.isRequired
-  }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default MovieCard;
