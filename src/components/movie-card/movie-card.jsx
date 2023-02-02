@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import './movie-card.scss';
 import { Button, Card } from 'react-bootstrap';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // The MovieCard function component
 const MovieCard = ({ movie }) => {

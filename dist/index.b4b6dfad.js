@@ -41418,7 +41418,6 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _movieCardScss = require("./movie-card.scss");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
-var _reactRouterDomDefault = parcelHelpers.interopDefault(_reactRouterDom);
 // The MovieCard function component
 const MovieCard = ({ movie  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
@@ -41461,7 +41460,7 @@ const MovieCard = ({ movie  })=>{
                         lineNumber: 21,
                         columnNumber: 9
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDomDefault.default), {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: `/movies/${encodeURIComponent(movie.id)}`,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                             variant: "link",
@@ -46520,14 +46519,12 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouter = require("react-router");
-var _reactRouterDefault = parcelHelpers.interopDefault(_reactRouter);
 var _reactRouterDom = require("react-router-dom");
-var _reactRouterDomDefault = parcelHelpers.interopDefault(_reactRouterDom);
 var _movieViewScss = require("./movie-view.scss");
 var _s = $RefreshSig$();
 const MovieView = ({ movies  })=>{
     _s();
-    const { movieId  } = (0, _reactRouterDefault.default)();
+    const { movieId  } = (0, _reactRouter.useParams)();
     const movie = movies.find((m)=>m.id === movieId);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "main-container text-center",
@@ -46746,7 +46743,7 @@ const MovieView = ({ movies  })=>{
                 lineNumber: 53,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDomDefault.default), {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                 to: `/`,
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     className: "btn btn-primary",
@@ -46773,7 +46770,7 @@ const MovieView = ({ movies  })=>{
 };
 _s(MovieView, "e2L2DPdRH1AShA7yIOCsYRlzvlI=", false, function() {
     return [
-        (0, _reactRouterDefault.default)
+        (0, _reactRouter.useParams)
     ];
 });
 _c = MovieView;
