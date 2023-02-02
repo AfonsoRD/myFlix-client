@@ -3,6 +3,7 @@ import LoginView from '../login-view/login-view';
 import SignupView from '../signup-view/signup-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
+import NavigationBar from '../navigation-bar/navigation-bar';
 import { Row, Col, Button } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -48,6 +49,14 @@ const MainView = () => {
 
   return (
     <BrowserRouter>
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      />
       <Row className='justify-content-md-center'>
         <Routes>
           <Route
@@ -72,11 +81,7 @@ const MainView = () => {
                   <Navigate to='/' />
                 ) : (
                   <Col md={5}>
-                    <LoginView
-                      onLoggedIn={(user) => {
-                        setUser(user);
-                      }}
-                    />
+                    <LoginView onLoggedIn={(user) => setUser(user)} />
                   </Col>
                 )}
               </>
