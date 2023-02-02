@@ -1,6 +1,11 @@
+import useParams from 'react-router';
+import Link from 'react-router-dom';
 import './movie-view.scss';
 
-const MovieView = ({ movie, onBackClick }) => {
+const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
+  const movie = movies.find((m) => m.id === movieId);
+
   return (
     <div className='main-container text-center'>
       <div>
@@ -46,13 +51,14 @@ const MovieView = ({ movie, onBackClick }) => {
         </div>
       </div>
       <br />
-      <button
-        onClick={onBackClick}
-        className='btn btn-primary'
-        style={{ cursor: 'pointer' }}
-      >
-        Back
-      </button>
+      <Link to={`/`}>
+        <button
+          className='btn btn-primary'
+          style={{ cursor: 'pointer' }}
+        >
+          Back
+        </button>
+      </Link>
     </div>
   );
 };
