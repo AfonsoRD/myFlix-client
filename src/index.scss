@@ -8,3 +8,13 @@ $color: steelblue;
 .my-flix {
   color: $color;
 }
+
+.favorite-icon {
+  color: darkred;
+  margin-top: 2%;
+  font-size: 40px;
+}
+
+.favorite-icon:hover {
+  fill: DarkSlateGray;
+}

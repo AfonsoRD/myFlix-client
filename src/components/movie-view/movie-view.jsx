@@ -1,5 +1,7 @@
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { BsFillSuitHeartFill } from 'react-icons/bs';
+import { Button, Row, Col } from 'react-bootstrap';
 import './movie-view.scss';
 
 const MovieView = ({ movies }) => {
@@ -51,14 +53,23 @@ const MovieView = ({ movies }) => {
         </div>
       </div>
       <br />
-      <Link to={`/`}>
-        <button
-          className='btn btn-primary'
-          style={{ cursor: 'pointer' }}
-        >
-          Back
-        </button>
-      </Link>
+      <Row className='d-flex flex-row justify-content-between mt-auto mb-md-4'>
+        <Col className='text-start'>
+          <Link to={`/`}>
+            <BsFillSuitHeartFill className='favorite-icon' />
+          </Link>
+        </Col>
+        <Col className='text-end'>
+          <Link to={`/`}>
+            <Button
+              className='btn btn-primary'
+              style={{ cursor: 'pointer' }}
+            >
+              Back
+            </Button>
+          </Link>
+        </Col>
+      </Row>
     </div>
   );
 };
