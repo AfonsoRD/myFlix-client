@@ -6,7 +6,6 @@ const NavigationBar = ({ user, onLoggedOut }) => {
     <Navbar
       bg='light'
       expand='lg'
-      fixed='top'
     >
       <Container>
         <Navbar.Brand
@@ -41,6 +40,12 @@ const NavigationBar = ({ user, onLoggedOut }) => {
                   to='/'
                 >
                   Home
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  to='/profile'
+                >
+                  Profile
                 </Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
               </>
