@@ -43,7 +43,7 @@ const NavigationBar = ({ user, onLoggedOut }) => {
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
-                  to='/profile'
+                  to='/users'
                 >
                   Profile
                 </Nav.Link>

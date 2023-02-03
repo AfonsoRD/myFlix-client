@@ -88,8 +88,9 @@ const MainView = () => {
               </>
             }
           />
+          {/* User Profile view */}
           <Route
-            path='/profile'
+            path='/users'
             element={
               <>
                 {!user ? (
@@ -97,8 +98,10 @@ const MainView = () => {
                     to='/login'
                     replace
                   />
+                ) : movies.length === 0 ? (
+                  <Col>The list is empty!</Col>
                 ) : (
-                  <Col md={8}>
+                  <Col>
                     <ProfileView />
                   </Col>
                 )}
