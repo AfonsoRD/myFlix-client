@@ -10,11 +10,15 @@ $color: steelblue;
 }
 
 .favorite-icon {
-  color: darkred;
+  color: DarkSlateGray;
   margin-top: 2%;
   font-size: 40px;
 }
 
 .favorite-icon:hover {
-  fill: DarkSlateGray;
+  color: darkred;
+}
+
+.favorite-movie {
+  color: crimson !important;
 }

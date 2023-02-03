@@ -4,7 +4,7 @@ import { BsFillSuitHeartFill } from 'react-icons/bs';
 import { Button, Row, Col } from 'react-bootstrap';
 import './movie-view.scss';
 
-const MovieView = ({ movies }) => {
+const MovieView = ({ movies, user }) => {
   const { movieId } = useParams();
   const movie = movies.find((m) => m.id === movieId);
 
