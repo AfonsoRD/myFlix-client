@@ -5,7 +5,7 @@ import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import ProfileView from '../profile-view/profile-view';
 import NavigationBar from '../navigation-bar/navigation-bar';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 const MainView = () => {
@@ -93,26 +93,6 @@ const MainView = () => {
               </>
             }
           />
-          {/* User Profile view */}
-          <Route
-            path='/users'
-            element={
-              <>
-                {!user ? (
-                  <Navigate
-                    to='/login'
-                    replace
-                  />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col>
-                    <ProfileView />
-                  </Col>
-                )}
-              </>
-            }
-          />
           <Route
             path='/movies/:movieId'
             element={
@@ -125,8 +105,16 @@ const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list of movies is empty!</Col>
                 ) : (
-                  <Col md={8}>
-                    <MovieView movies={movies} />
+                  <Col>
+                    <MovieView
+                      movies={movies}
+                      user={user}
+                      updateUserOnFav={(user) => {
+                        console.log('Update User called', user);
+                        setUser(user);
+                        localStorage.setItem('user', JSON.stringify(user));
+                      }}
+                    />
                   </Col>
                 )}
               </>
@@ -153,8 +141,58 @@ const MainView = () => {
                       >
                         <MovieCard movie={movie} />
                       </Col>
+
+                      /*<MovieCard
+movieData={movie}
+user={user}
+updateUserOnFav={(user) => {
+  console.log('Update User called', user);
+  setUser(user);
+  localStorage.setItem(
+    'user',
+    JSON.stringify(user)
+  );
+}}
+/>
+</Col>*/
                     ))}
+                    <Row>
+                      <Col className='text-end mt-2'>
+                        <Button
+                          onClick={() => {
+                            setUser(null);
+                            setToken(null);
+                            localStorage.clear();
+                          }}
+                          variant='primary'
+                          size='lg'
+                          className='mb-5'
+                        >
+                          Sign out
+                        </Button>
+                      </Col>
+                    </Row>
                   </>
+                )}
+              </>
+            }
+          />
+          {/*User Profile view*/}
+          <Route
+            path='/users/:username'
+            element={
+              <>
+                {!user ? (
+                  <Navigate
+                    to='/login'
+                    replace
+                  />
+                ) : movies.length === 0 ? (
+                  <Col>The list is empty!</Col>
+                ) : (
+                  <Col>
+                    <ProfileView movies={movies} />
+                  </Col>
                 )}
               </>
             }
