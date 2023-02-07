@@ -75,14 +75,11 @@ export const UpdateView = ({ storedToken, storedUser }) => {
                     // value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
-                    minLength='3'
+                    minLength='5'
                     pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
-                    title="Username should contain more than 3 characters, may only contain letters, numbers and special characters: .,'-!?%&"
+                    title="Username should contain more than 5 characters, may only contain letters, numbers and special characters: .,'-!?%&"
                     placeholder='Enter your name'
                   />
-                  <Form.Text className='text-muted'>
-                    We'll never share your email with anyone else.
-                  </Form.Text>
                 </Form.Group>
                 <Form.Group
                   controlId='forPassword'
@@ -109,6 +106,7 @@ export const UpdateView = ({ storedToken, storedUser }) => {
                     // value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    minLength='5'
                     placeholder='Enter email'
                   />
                 </Form.Group>
