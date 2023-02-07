@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { UpdateView } from './update-view';
+import { UserInfo } from './user-info';
 
 const ProfileView = () => {
   const storedToken = localStorage.getItem('token');
@@ -9,11 +10,7 @@ const ProfileView = () => {
 
   return (
     <>
-      <Row>
-        <Col>
-          <div>Profile view goes here</div>
-        </Col>
-      </Row>
+      <UserInfo user={storedUser} />
 
       <UpdateView
         storedToken={storedToken}
