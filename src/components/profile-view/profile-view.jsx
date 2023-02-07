@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Form, Row, Col } from 'react-bootstrap';
 import { UpdateView } from './update-view';
 import { UserInfo } from './user-info';
+import { DeleteUser } from './delete-user';
 
 const ProfileView = () => {
   const storedToken = localStorage.getItem('token');
@@ -13,6 +13,10 @@ const ProfileView = () => {
       <UserInfo user={storedUser} />
 
       <UpdateView
+        storedToken={storedToken}
+        storedUser={storedUser}
+      />
+      <DeleteUser
         storedToken={storedToken}
         storedUser={storedUser}
       />
