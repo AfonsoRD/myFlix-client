@@ -56,13 +56,18 @@ const MovieView = ({ movies, user }) => {
             <div className='text-decoration-underline mb-2'>Description: </div>
             <span>{movie.description}</span>
           </div>
+
           <Row className='d-flex flex-row justify-content-between mt-auto mb-md-4'>
-            <Col className='text-start'></Col>
+            <Col className='text-start'>
+              <Link to={`/`}>
+                <BsFillSuitHeartFill className='favorite-icon' />
+              </Link>
+            </Col>
             <Col className='text-end'>
               <Link to={`/`}>
                 <Button
-                  variant='secondary'
-                  size='lg'
+                  className='btn btn-primary'
+                  style={{ cursor: 'pointer' }}
                 >
                   Back
                 </Button>
