@@ -15,7 +15,7 @@ const NavigationBar = ({ user, onLoggedOut }) => {
           My Flix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
+        <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
             {!user && (
               <>
@@ -43,11 +43,11 @@ const NavigationBar = ({ user, onLoggedOut }) => {
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
-                  to='/users'
+                  to={`/users/${user.Username}`}
                 >
                   Profile
                 </Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <Nav.Link onClick={onLoggedOut}>Sign out</Nav.Link>
               </>
             )}
           </Nav>
