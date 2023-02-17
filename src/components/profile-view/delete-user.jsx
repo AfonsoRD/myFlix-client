@@ -1,4 +1,4 @@
-import { Button, Card, Col } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 
 export const DeleteUser = ({ storedToken, storedUser }) => {
   const handleDeregister = () => {

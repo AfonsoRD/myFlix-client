@@ -1,12 +1,21 @@
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { BsFillSuitHeartFill } from 'react-icons/bs';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Row, Col } from 'react-bootstrap';
-import './movie-view.scss';
+import { FavoriteIcon } from '../favorite-icon/favorite-icon';
+import { MovieCard } from '../movie-card/movie-card';
 
-const MovieView = ({ movies, user }) => {
+const MovieView = ({ movies, user, updateUserOnFav }) => {
+  console.log('MovieView prop', updateUserOnFav);
   const { movieId } = useParams();
   const movie = movies.find((m) => m.id === movieId);
+
+  let similarMovies = movies.filter((filteredMovie) => {
+    return (
+      filteredMovie.genre === movie.genre && filteredMovie.title !== movie.title
+    );
+  });
 
   return (
     <>
@@ -16,8 +25,8 @@ const MovieView = ({ movies, user }) => {
           className='text-center text-md-end'
         >
           <img
-            src={movie?.image}
-            alt={`Poster for ${movie?.title}`}
+            src={movie.image}
+            alt={`Poster for ${movie.title}`}
             className='img-fluid h-100 w-auto movie-view-img'
           />
         </Col>
@@ -32,15 +41,15 @@ const MovieView = ({ movies, user }) => {
             >
               <h3 className='my-0'>
                 <span>Title: </span>
-                <span>{movie?.title}</span>
+                <span>{movie.title}</span>
               </h3>
               <h5 className='mt-1 text-left text-muted'>
                 <span>Director: </span>
-                <span>{movie?.directorName}</span>
+                <span>{movie.directorName}</span>
               </h5>
               <h6>
                 <span>Year: </span>
-                <span>{movie?.year}</span>
+                <span>{movie.year}</span>
               </h6>
             </Col>
 
@@ -59,9 +68,11 @@ const MovieView = ({ movies, user }) => {
 
           <Row className='d-flex flex-row justify-content-between mt-auto mb-md-4'>
             <Col className='text-start'>
-              <Link to={`/`}>
-                <BsFillSuitHeartFill className='favorite-icon' />
-              </Link>
+              <FavoriteIcon
+                user={user}
+                movie={movie}
+                updateUserOnFav={updateUserOnFav}
+              />
             </Col>
             <Col className='text-end'>
               <Link to={`/`}>
@@ -75,6 +86,21 @@ const MovieView = ({ movies, user }) => {
             </Col>
           </Row>
         </Col>
+      </Row>
+      <Row>
+        <h2 className='mt-0'>Similar movies</h2>
+        <hr />
+        {console.log(similarMovies)}
+        {similarMovies.map((movie) => (
+          <Col
+            className='mb-5'
+            key={movie.id}
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+          ></Col>
+        ))}
       </Row>
     </>
   );

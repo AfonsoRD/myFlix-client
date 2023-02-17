@@ -40,6 +40,7 @@ const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
+        //console.log(moviesFromApi);
       })
       .catch((error) => {
         console.log(error);
@@ -137,24 +138,21 @@ const MainView = () => {
                       <Col
                         className='mb-5 '
                         key={movie.id}
-                        md={3}
+                        xs={12}
+                        sm={6}
+                        md={4}
+                        lg={3}
                       >
-                        <MovieCard movie={movie} />
+                        <MovieCard
+                          movieData={movie}
+                          user={user}
+                          updateUserOnFav={(user) => {
+                            console.log('Update User called', user);
+                            setUser(user);
+                            localStorage.setItem('user', JSON.stringify(user));
+                          }}
+                        />
                       </Col>
-
-                      /*<MovieCard
-movieData={movie}
-user={user}
-updateUserOnFav={(user) => {
-  console.log('Update User called', user);
-  setUser(user);
-  localStorage.setItem(
-    'user',
-    JSON.stringify(user)
-  );
-}}
-/>
-</Col>*/
                     ))}
                     <Row>
                       <Col className='text-end mt-2'>
