@@ -6,12 +6,13 @@ import { Button, Row, Col } from 'react-bootstrap';
 import { FavoriteIcon } from '../favorite-icon/favorite-icon';
 import { MovieCard } from '../movie-card/movie-card';
 
-const MovieView = ({ movies, user, updateUserOnFav }) => {
+// MovieView receives property from the MainView - movies
+export const MovieView = ({ movies, user, updateUserOnFav }) => {
   console.log('MovieView prop', updateUserOnFav);
   const { movieId } = useParams();
   const movie = movies.find((m) => m.id === movieId);
 
-  let similarMovies = movies.filter((filteredMovie) => {
+  const similarMovies = movies.filter((filteredMovie) => {
     return (
       filteredMovie.genre === movie.genre && filteredMovie.title !== movie.title
     );
@@ -90,7 +91,6 @@ const MovieView = ({ movies, user, updateUserOnFav }) => {
       <Row>
         <h2 className='mt-0'>Similar movies</h2>
         <hr />
-        {console.log(similarMovies)}
         {similarMovies.map((movie) => (
           <Col
             className='mb-5'
@@ -99,11 +99,35 @@ const MovieView = ({ movies, user, updateUserOnFav }) => {
             sm={6}
             md={4}
             lg={3}
-          ></Col>
+          >
+            <MovieCard
+              movieData={movie}
+              user={user}
+              updateUserOnFav={(user) => {
+                console.log('Update User called', user);
+                setUser(user);
+                localStorage.setItem('user', JSON.stringify(user));
+              }}
+            />
+          </Col>
         ))}
       </Row>
     </>
   );
 };
 
-export default MovieView;
+MovieView.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      year: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+      genreDescription: PropTypes.string.isRequired,
+      directorName: PropTypes.string.isRequired,
+      directorBio: PropTypes.string.isRequired,
+      directorBirthday: PropTypes.string.isRequired
+    })
+  ).isRequired
+};

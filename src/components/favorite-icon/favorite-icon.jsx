@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { BsFillSuitHeartFill } from 'react-icons/bs';
 
-// to get right color of Icon we need to refresh the page
 export const FavoriteIcon = ({ user, movie, updateUserOnFav }) => {
   const token = localStorage.getItem('token');
 
@@ -26,11 +25,13 @@ export const FavoriteIcon = ({ user, movie, updateUserOnFav }) => {
     let iconChange;
 
     if (alreadyFavorite) {
+      console.log('already favorite');
       requestOptions.method = 'DELETE';
       resultAlert = `${movie.title} is deleted from the list of favorites`;
       iconChange = () =>
         document.querySelector('svg').classList.remove('favorite-movie');
     } else {
+      console.log('add to favorite');
       requestOptions.method = 'POST';
       resultAlert = `${movie.title} is added to the list of favorites`;
       iconChange = () =>
@@ -42,7 +43,7 @@ export const FavoriteIcon = ({ user, movie, updateUserOnFav }) => {
       .then((data) => {
         console.log(data);
         alert(`${resultAlert}`);
-        // console.log(updateUserOnFav);
+        console.log(updateUserOnFav);
         updateUserOnFav(data);
         document.querySelector('svg').classList.add('favorite-movie');
       })
