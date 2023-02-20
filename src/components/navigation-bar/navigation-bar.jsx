@@ -1,7 +1,7 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar
       bg='light'
@@ -56,5 +56,3 @@ const NavigationBar = ({ user, onLoggedOut }) => {
     </Navbar>
   );
 };
-
-export default NavigationBar;

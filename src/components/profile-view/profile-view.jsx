@@ -4,7 +4,7 @@ import { UserInfo } from './user-info';
 import { DeleteUser } from './delete-user';
 import { FavoriteMovies } from './favorite-movies';
 
-const ProfileView = ({ movies }) => {
+export const ProfileView = ({ movies }) => {
   const storedToken = localStorage.getItem('token');
   const storedUser = JSON.parse(localStorage.getItem('user'));
 
@@ -27,5 +27,3 @@ const ProfileView = ({ movies }) => {
     </>
   );
 };
-
-export default ProfileView;

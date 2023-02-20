@@ -9,7 +9,7 @@ import {
   Row
 } from 'react-bootstrap';
 
-const SignupView = () => {
+export const SignupView = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -108,5 +108,3 @@ const SignupView = () => {
     </Container>
   );
 };
-
-export default SignupView;

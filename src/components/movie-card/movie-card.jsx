@@ -7,7 +7,7 @@ import { Button, Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // The MovieCard function component
-const MovieCard = ({ movieData, user, updateUserOnFav }) => {
+export const MovieCard = ({ movieData, user, updateUserOnFav }) => {
   return (
     <Card
       style={{ width: '18rem' }}
@@ -62,5 +62,3 @@ MovieCard.propTypes = {
     directorBirthday: PropTypes.string.isRequired
   }).isRequired
 };
-
-export default MovieCard;

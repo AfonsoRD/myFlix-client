@@ -9,7 +9,7 @@ import {
   Row
 } from 'react-bootstrap';
 
-const LoginView = ({ onLoggedIn }) => {
+export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -86,5 +86,3 @@ const LoginView = ({ onLoggedIn }) => {
     </Container>
   );
 };
-
-export default LoginView;
