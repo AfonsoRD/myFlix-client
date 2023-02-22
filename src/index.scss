@@ -8,3 +8,17 @@ $color: steelblue;
 .my-flix {
   color: $color;
 }
+
+.favorite-icon {
+  color: DarkSlateGray;
+  margin-top: 2%;
+  font-size: 40px;
+}
+
+.favorite-icon:hover {
+  color: crimson;
+}
+
+.favorite-movie {
+  color: darkred !important;
+}

@@ -12016,4 +12016,18 @@ textarea.form-control-lg {
   color: #4682b4;
 }
 
+.favorite-icon {
+  color: #2f4f4f;
+  margin-top: 2%;
+  font-size: 40px;
+}
+
+.favorite-icon:hover {
+  color: #8b0000;
+}
+
+.favorite-movie {
+  color: #dc143c !important;
+}
+
 /*# sourceMappingURL=index.e3f97e84.css.map */

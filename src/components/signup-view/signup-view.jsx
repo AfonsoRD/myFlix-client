@@ -9,7 +9,7 @@ import {
   Row
 } from 'react-bootstrap';
 
-const SignupView = () => {
+export const SignupView = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -56,6 +56,7 @@ const SignupView = () => {
                       type='text'
                       value={username}
                       minLength='5'
+                      pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder='Enter a username'
                       required
@@ -67,6 +68,7 @@ const SignupView = () => {
                       type='password'
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      pattern="^[A-Za-z0-9 .,'\-!?%&]+$"
                       placeholder='Choose your password'
                       required
                     />
@@ -106,5 +108,3 @@ const SignupView = () => {
     </Container>
   );
 };
-
-export default SignupView;
