@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FavoriteIcon } from '../favorite-icon/favorite-icon';
-
+import './movie-card.scss';
 import { Button, Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export const MovieCard = ({ movieData, user, updateUserOnFav }) => {
   return (
     <Card
-      style={{ width: '18rem' }}
+      style={{ width: '18rem hidden-card' }}
       className='h-100'
     >
       <Card.Img

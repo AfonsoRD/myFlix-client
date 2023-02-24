@@ -7,14 +7,15 @@ import { ProfileView } from '../profile-view/profile-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { Row, Col, Button } from 'react-bootstrap';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './main-view.scss';
 
 const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = localStorage.getItem('token');
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     if (!token) {
@@ -47,7 +48,10 @@ const MainView = () => {
       });
   }, [token]);
 
-  //User view for Login
+  // Search input
+  const handleSearchInput = (e) => {
+    setSearchInput(e.target.value);
+  };
 
   return (
     <BrowserRouter>
@@ -56,8 +60,10 @@ const MainView = () => {
         onLoggedOut={() => {
           setUser(null);
           setToken(null);
+          setSearchInput('');
           localStorage.clear();
         }}
+        handleSearchInput={(e) => setSearchInput(e.target.value)}
       />
       <Row className='justify-content-md-center'>
         <Routes>
@@ -131,17 +137,20 @@ const MainView = () => {
                     replace
                   />
                 ) : movies.length === 0 ? (
-                  <Col>The list of movies is empty!</Col>
+                  <Col>The list is empty!</Col>
                 ) : (
                   <>
                     {movies.map((movie) => (
                       <Col
-                        className='mb-5 '
+                        className={`${
+                          movie.title
+                            .toLowerCase()
+                            .includes(searchInput.toLowerCase())
+                            ? ''
+                            : 'hidden-card'
+                        } mb-4`}
                         key={movie.id}
-                        xs={12}
-                        sm={6}
-                        md={4}
-                        lg={3}
+                        md={3}
                       >
                         <MovieCard
                           movieData={movie}
@@ -154,27 +163,28 @@ const MainView = () => {
                         />
                       </Col>
                     ))}
-                    <Row>
-                      <Col className='text-end mt-2'>
-                        <Button
-                          onClick={() => {
-                            setUser(null);
-                            setToken(null);
-                            localStorage.clear();
-                          }}
-                          variant='primary'
-                          size='lg'
-                          className='mb-5'
-                        >
-                          Sign out
-                        </Button>
-                      </Col>
-                    </Row>
                   </>
                 )}
+                <Row>
+                  <Col className='text-end mt-2'>
+                    <Button
+                      onClick={() => {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear();
+                      }}
+                      variant='primary'
+                      size='lg'
+                      className='mb-5'
+                    >
+                      Sign out
+                    </Button>
+                  </Col>
+                </Row>
               </>
             }
           />
+
           {/*User Profile view*/}
           <Route
             path='/users/:username'
