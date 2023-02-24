@@ -1,7 +1,8 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, handleSearchInput }) => {
   return (
     <Navbar
       bg='light'
@@ -51,6 +52,18 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
               </>
             )}
           </Nav>
+          {user && (
+            <Form className='d-flex'>
+              {/*Input field for searching */}
+              <Form.Control
+                id='search-bar'
+                type='text'
+                placeholder='Search by title'
+                className='mr-sm-2 mx-2 orange-border'
+                onChange={handleSearchInput}
+              />
+            </Form>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
