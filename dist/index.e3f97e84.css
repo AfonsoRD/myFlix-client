@@ -1,8 +1,14 @@
-
+.hidden-card {
+  display: none;
+}
 
 .main-container {
   background-color: #fff;
   padding: 2%;
+}
+
+hidden-card {
+  display: none;
 }
 
 :root {
@@ -168,6 +174,7 @@ p {
 abbr[title] {
   cursor: help;
   text-decoration-skip-ink: none;
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
 }
 
@@ -2631,7 +2638,7 @@ textarea.form-control-lg {
   padding-bottom: .625rem;
 }
 
-.form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-control-plaintext ~ label, .form-floating > .form-select ~ label, .form-floating > .form-control:-webkit-autofill ~ label {
+.form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-control-plaintext ~ label, .form-floating > .form-select ~ label, .form-floating > .form-control:autofill ~ label {
   opacity: .65;
   transform: scale(.85)translateY(-.5rem)translateX(.15rem);
 }
@@ -12023,11 +12030,11 @@ textarea.form-control-lg {
 }
 
 .favorite-icon:hover {
-  color: #8b0000;
+  color: #dc143c;
 }
 
 .favorite-movie {
-  color: #dc143c !important;
+  color: #8b0000 !important;
 }
 
 /*# sourceMappingURL=index.e3f97e84.css.map */

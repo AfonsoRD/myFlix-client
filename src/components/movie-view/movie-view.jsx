@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Button, Row, Col } from 'react-bootstrap';
 import { FavoriteIcon } from '../favorite-icon/favorite-icon';
 import { MovieCard } from '../movie-card/movie-card';
+import './movie-view.scss';
 
 // MovieView receives property from the MainView - movies
 export const MovieView = ({ movies, user, updateUserOnFav }) => {
